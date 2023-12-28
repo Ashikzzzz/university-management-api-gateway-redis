@@ -5,4 +5,12 @@ let redisClient = createClient({
 });
 
 redisClient.on('error', (err) => console.log('redisError', err));
-redisClient.on('connect', (err) => console.log('redis connected'));
+redisClient.on('connect', (err) => console.log('redis is connected'));
+
+const connect = async (): Promise<void> => {
+  await redisClient.connect();
+};
+
+export const RedisClient = {
+  connect
+};
