@@ -12,7 +12,6 @@ const createAcademicSemester = async (req: Request): Promise<IGenericResponse> =
 };
 
 // get all from db
-
 const getAllAcademicSemester = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await HTTPService.get('/academic-semester', {
     params: req.query,
@@ -23,7 +22,19 @@ const getAllAcademicSemester = async (req: Request): Promise<IGenericResponse> =
   return response;
 };
 
+// get by id
+const getSingleAcademicSemester = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HTTPService.get(`/academic-semester/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 export const academicSemesterService = {
   createAcademicSemester,
-  getAllAcademicSemester
+  getAllAcademicSemester,
+  getSingleAcademicSemester
 };
