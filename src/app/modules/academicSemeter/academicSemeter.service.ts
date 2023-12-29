@@ -11,6 +11,19 @@ const createAcademicSemester = async (req: Request): Promise<IGenericResponse> =
   return response;
 };
 
+// get all from db
+
+const getAllAcademicSemester = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await HTTPService.get('/academic-semester', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 export const academicSemesterService = {
-  createAcademicSemester
+  createAcademicSemester,
+  getAllAcademicSemester
 };

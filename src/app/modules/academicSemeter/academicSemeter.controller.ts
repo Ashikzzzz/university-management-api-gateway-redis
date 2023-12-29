@@ -9,6 +9,13 @@ const createAcademicSemester = catchAsync(async (req: Request, res: Response) =>
   sendResponse(res, result);
 });
 
+// get all from db
+const getAllAcademicSemester = catchAsync(async (req: Request, res: Response) => {
+  const result = await academicSemesterService.getAllAcademicSemester(req);
+  sendResponse(res, result);
+});
+
 export const academicSemetserController = {
-  createAcademicSemester
+  createAcademicSemester,
+  getAllAcademicSemester
 };
