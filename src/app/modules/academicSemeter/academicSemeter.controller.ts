@@ -21,8 +21,22 @@ const getSingleAcademicSemester = catchAsync(async (req: Request, res: Response)
   sendResponse(res, result);
 });
 
+// update
+const updateAcademicSemester = catchAsync(async (req: Request, res: Response) => {
+  const result = await academicSemesterService.updateAcademicSemester(req);
+  sendResponse(res, result);
+});
+
+// delete
+const deleteAcademicSemester = catchAsync(async (req: Request, res: Response) => {
+  const result = await academicSemesterService.deleteAcademicSemester(req);
+  sendResponse(res, result);
+});
+
 export const academicSemetserController = {
   createAcademicSemester,
   getAllAcademicSemester,
-  getSingleAcademicSemester
+  getSingleAcademicSemester,
+  updateAcademicSemester,
+  deleteAcademicSemester
 };
